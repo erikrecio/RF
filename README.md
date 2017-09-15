@@ -21,7 +21,7 @@ The optimal depth of a tree will be case dependent. For that reason we first tra
 <img src="result_plots/lcurve.gif" width="500px"/>
 </p>
 
-Optimizing the entropy gain threshold is an [ill-posed regularization problem](https://en.wikipedia.org/wiki/Tikhonov_regularization), that is handled in this implementation by finding the elbow point of 'maximum depth' (point furthest from the line connecting the the function's extremes), and averaging it out over _n_, as we can see here: 
+Optimizing the entropy gain threshold is an [ill-posed regularization problem](https://en.wikipedia.org/wiki/Tikhonov_regularization), that is handled in this implementation by finding the elbow point of 'maximum depth' (point furthest from the line connecting the function's extremes), and averaging it out over _n_, as we can see here: 
 
 
 <p align="center">
@@ -34,10 +34,13 @@ From _[Decision Forests for Classification,
 Regression, Density Estimation, Manifold
 Learning and Semi-Supervised Learning](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/decisionForests_MSR_TR_2011_114.pdf)_: 
 
-_A key aspect of decision forests is the fact that its component trees are all randomly different from one another. This leads to de-correlation between the individual tree predictions and, in turn, to improved gen- eralization. Forest randomness also helps achieve high robustness with respect to noisy data.Randomness is injected into the trees during the training phase. Two of the most popular ways of doing so are:_
-* _[Random training data set sampling (e.g. bagging) ](https://en.wikipedia.org/wiki/Bootstrap_aggregating)_
+_A key aspect of decision forests is the fact that its component trees are all randomly different from one another. This leads to de-correlation between the individual tree predictions and, in turn, to improved gen- eralization. Forest randomness also helps achieve high robustness with respect to noisy data.
+Randomness is injected into the trees during the training phase. Two of the most popular ways of doing so are:_
+
+* _[Random training data set sampling (e.g. bagging) ](https://en.wikipedia.org/wiki/Bootstrap_aggregating)_
 * _[Randomized node optimization](https://en.wikipedia.org/wiki/Random_subspace_method)_
-_These two techniques are not mutually exclusive and could be used together._
+
+_These two techniques are not mutually exclusive and could be used together._
 
 The method is tested by sampling a combination of gaussians. In order to introduce randomness the node optimization is randomized by parameter _rho_, which is proportional to the available parameter search space at each node split. With a 50% _rho_ and 5 trees, we see the firsts results below:
 
